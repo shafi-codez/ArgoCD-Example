@@ -110,15 +110,15 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:
-  nodeSelector:
-    workload-type: infra
-  tolerations:
-    - effect: NoSchedule
-      key: workload-type
-      operator: Equal
-      value: infra
   template:
     spec:
+      nodeSelector: 
+        workload-type: infra
+      tolerations:
+      - effect: NoSchedule
+        key: workload-type
+        operator: Equal
+        value: infra
       containers:
         - name: postsync-job-success
           image: ubuntu     
