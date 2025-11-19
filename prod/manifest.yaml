@@ -30,13 +30,6 @@ kind: ReplicaSet
 metadata:
   name: backend
 spec:
-  nodeSelector:
-    workload-type: infra
-  tolerations:
-    - effect: NoSchedule
-      key: workload-type
-      operator: Equal
-      value: infra
   replicas: 1
   selector:
     matchLabels:
@@ -46,6 +39,13 @@ spec:
       labels:
         tier: backend
     spec:
+      nodeSelector:
+        workload-type: infra
+      tolerations:
+        - effect: NoSchedule
+          key: workload-type
+          operator: Equal
+          value: infra
       containers:
         - name: main
           image: nginx:latest
