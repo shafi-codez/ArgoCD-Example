@@ -23,6 +23,13 @@ kind: ReplicaSet
 metadata:
   name: backend
 spec:
+  nodeSelector:
+    workload-type: infra
+  tolerations:
+    - effect: NoSchedule
+      key: workload-type
+      operator: Equal
+      value: infra
   replicas: 1
   selector:
     matchLabels:
@@ -41,6 +48,13 @@ kind: Service
 metadata:
   name: backend
 spec:
+  nodeSelector:
+    workload-type: infra
+  tolerations:
+    - effect: NoSchedule
+      key: workload-type
+      operator: Equal
+      value: infra
   selector:
     tier: backend
   ports:
@@ -55,6 +69,13 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
+  nodeSelector:
+    workload-type: infra
+  tolerations:
+    - effect: NoSchedule
+      key: workload-type
+      operator: Equal
+      value: infra
   replicas: 1
   selector:
     matchLabels:
@@ -75,6 +96,13 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
+  nodeSelector:
+    workload-type: infra
+  tolerations:
+    - effect: NoSchedule
+      key: workload-type
+      operator: Equal
+      value: infra
   selector:
     tier: frontend
   ports:
@@ -89,6 +117,13 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:
+  nodeSelector:
+    workload-type: infra
+  tolerations:
+    - effect: NoSchedule
+      key: workload-type
+      operator: Equal
+      value: infra
   template:
     spec:
       containers:
