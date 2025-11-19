@@ -96,13 +96,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  nodeSelector:
-    workload-type: infra
-  tolerations:
-    - effect: NoSchedule
-      key: workload-type
-      operator: Equal
-      value: infra
   selector:
     tier: frontend
   ports:
