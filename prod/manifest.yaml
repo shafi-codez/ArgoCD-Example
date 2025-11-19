@@ -55,13 +55,6 @@ kind: Service
 metadata:
   name: backend
 spec:
-  nodeSelector:
-    workload-type: infra
-  tolerations:
-    - effect: NoSchedule
-      key: workload-type
-      operator: Equal
-      value: infra
   selector:
     tier: backend
   ports:
