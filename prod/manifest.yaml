@@ -6,9 +6,9 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
+  ttlSecondsAfterFinished: 300
   template:
-    spec:
-      ttlSecondsAfterFinished: 300
+    spec:  
       nodeSelector: 
         workload-type: infra
       tolerations:
